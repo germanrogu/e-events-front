@@ -1,12 +1,17 @@
 <template>
   <v-app>
     <v-app-bar app>
-      <v-toolbar-title> E-events </v-toolbar-title>
+      <v-toolbar-title>
+        <g-link to="/"> E-events </g-link>
+      </v-toolbar-title>
       <v-text-field
+        v-model="searchText"
         class="ml-8"
         style="max-width: 300px"
         prepend-inner-icon="mdi-magnify"
         placeholder="Search"
+        @click:clear="searchText = ''"
+        clearable
         outlined
         rounded
         dense
@@ -17,7 +22,13 @@
       <v-btn>Create event</v-btn>
     </v-app-bar>
     <v-main>
-      <slot />
+      <v-container>
+        <v-row>
+          <v-col>
+            <slot :searchText="searchText"/>
+          </v-col>
+        </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>
@@ -31,31 +42,23 @@ query {
 }
 </static-query>
 
-<style>
-body {
-  font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto,
-    "Helvetica Neue", Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  line-height: 1.5;
-}
+<script>
 
-.layout {
-  max-width: 760px;
-  margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
-}
 
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 80px;
+export default {
+  data(){
+    return {
+      searchText: '',
+    }
+  }
 }
+  
+</script>
 
-.nav__link {
-  margin-left: 20px;
+
+<style scoped>
+.v-toolbar__title a {
+  text-decoration:none;
+  color: #000;
 }
 </style>
