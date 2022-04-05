@@ -2,15 +2,15 @@
   <Layout>
     <h1>{{ $page.event.title }}</h1>
     <img :src="`http://localhost:1337${$page.event.image}`" />
-    <p>{{$page.event.description}}</p>
+    <p>{{ $page.event.description }}</p>
   </Layout>
 </template>
 
 <page-query>
 
-query{
-  event(id:"2"){
-	id
+query Event ($id: ID!) {
+  event(id:$id){
+	  id
     title
     duration
     price
