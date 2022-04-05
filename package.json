@@ -1,0 +1,15 @@
+{
+  "name": "e-events-front",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "gridsome": "^0.7.0",
+    "moment": "^2.29.2",
+    "vuetify": "^2.6.4"
+  }
+}
